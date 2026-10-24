@@ -1,0 +1,45 @@
+model:
+  encoder: efficientnet-b4
+  decoder: UnetPlusPlus
+  attention: CBAM
+  attention_position: final_decoder_output
+  in_channels: 7
+  output_channels: 1
+  activation: sigmoid
+  encoder_initialization_for_training: imagenet
+  encoder_initialization_for_example: random
+  automatic_weight_download: false
+channels:
+  - red
+  - green
+  - blue
+  - building_height
+  - road_distance
+  - road_mask
+  - road_width
+preprocessing:
+  input_height: 256
+  input_width: 256
+  rgb_divisor: 255.0
+  auxiliary_scaling: original_input_units
+  missing_auxiliary_value: 0.0
+training:
+  center_crop: 128
+  batch_size: 4
+  max_epochs: 300
+  optimizer: Adam
+  learning_rate: 0.001
+  early_stopping_patience: 10
+  loss: masked_mse
+  label_normalization: training_label_min_max
+split:
+  train: 0.70
+  validation: 0.15
+  test: 0.15
+  unit: spatial_group
+example:
+  seed: 314159
+  device: cpu
+  cpu_threads: 2
+  weights: random
+  output: normalized_network_response

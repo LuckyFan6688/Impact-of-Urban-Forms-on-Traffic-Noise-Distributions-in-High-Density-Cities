@@ -1,0 +1,20 @@
+Indicator,Abbreviation,Definition,Unit,Field,Formula,Calculation method,Required input
+Average building height,ABH,Area-weighted mean building height over building pixels,m,mean_height,mean(H[p] for building pixels p),abh,Building-height raster in metres; valid land-use mask; H >= 3 m
+Ground space index,GSI,Building-pixel fraction of valid analysis pixels,1,build_density,N_building / N_valid,gsi,Building-height raster; valid land-use mask; H >= 3 m
+Floor space index,FSI,Continuous floor-count sum per valid analysis pixel,1,FAR_index,"sum(clip(H[p]/3, 0, 80)) / N_valid",fsi,Building-height raster in metres; floor height 3 m; valid land-use mask
+Building boundary density,BBD,Building boundary-pixel count per valid analysis pixel,pixel/pixel^2,build_edge_density,N_boundary(building) / N_valid,bbd,Building mask and valid land-use mask; boundary = mask XOR binary_erosion(mask)
+Architectural landscape shape index,ALSI,Building boundary-pixel shape index,1,build_lsi,N_boundary(building) / (4 * sqrt(N_building)),alsi,Building mask; boundary = mask XOR binary_erosion(mask)
+Road length index,RLI,Skeleton-pixel road-length index normalized by valid-pixel area,pixel/pixel^2,road_length_index,N_skeleton(road) / N_valid,rli,Road-mask raster (>0); valid land-use mask; skeletonize
+Road area density,RAD,Road-pixel fraction of valid analysis pixels,1,road_area_density,N_road / N_valid,rad,Road-mask raster (>0); valid land-use mask
+Road landscape shape index,RLSI,Road boundary-pixel shape index,1,road_lsi,N_boundary(road) / (4 * sqrt(N_road)),rlsi,Road mask; boundary = mask XOR binary_erosion(mask)
+Trunk road length index,TRLI,Skeleton-pixel length of roads at least 15 m wide per valid pixel,pixel/pixel^2,main_road_length_index,N_skeleton(road AND width>=15 m) / N_valid,trli,Road mask; road-width raster in metres; valid land-use mask
+Proportion of commercial land,PC,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_4,N_land_class_4 / N_valid,pc,Categorical land-use raster; class 4; valid classes 1--8
+Proportion of residential land,PR,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_5,N_land_class_5 / N_valid,pr,Categorical land-use raster; class 5; valid classes 1--8
+Proportion of industrial land,PI,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_6,N_land_class_6 / N_valid,pi,Categorical land-use raster; class 6; valid classes 1--8
+Proportion of transportation facilities land,PT,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_1,N_land_class_1 / N_valid,pt,Categorical land-use raster; class 1; valid classes 1--8
+Proportion of green space land,PG,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_2,N_land_class_2 / N_valid,pg,Categorical land-use raster; class 2; valid classes 1--8
+Proportion of public administration and public services land,PB,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_3,N_land_class_3 / N_valid,pb,Categorical land-use raster; class 3; valid classes 1--8
+Proportion of water land,PW,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_7,N_land_class_7 / N_valid,pw,Categorical land-use raster; class 7; valid classes 1--8
+Proportion of other land,PO,Land-use fraction among valid class-1--8 pixels,fraction (0-1),land_type_8,N_land_class_8 / N_valid,po,Categorical land-use raster; class 8; valid classes 1--8
+Degree of land mix,DLM,Shannon land-use entropy with numerical epsilon,1,land_mix_entropy,-sum(p_i * ln(p_i + 1e-12)),dlm,Valid land-use classes 1--8; observed class proportions p_i
+Degree of functional mixing,DFM,Entropy normalized by the number of observed land-use classes,1,land_mix_norm_0to1,DLM / ln(k_observed),dfm,Valid land-use classes 1--8; k_observed >=1; single-class division is nonfinite

@@ -1,0 +1,4 @@
+Used JSON: \Ln_equiv_A_range_global.json
+n_HM=42.189%, n_ML=80.410%
+Features: D1,D2,D3,A_range,r1,r2,r3
+Fixed Y axis for boxplots: 0.0-30.0 dB, step 5.0 dB

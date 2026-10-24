@@ -1,0 +1,38 @@
+{
+  "variable": "A_range",
+  "thresholds_dB_A_range": {
+    "HighMid": 9.759807434082031,
+    "MidLow": 16.74128641764323
+  },
+  "equiv_n_percent": {
+    "HighMid": 80.41019743147403,
+    "MidLow": 42.18899750814644
+  },
+  "method": "lda",
+  "order": [
+    "High",
+    "Low",
+    "Mid"
+  ],
+  "quantile_grid": [
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45,
+    50,
+    55,
+    60,
+    65,
+    70,
+    75,
+    80,
+    85,
+    90,
+    95
+  ]
+}

@@ -1,0 +1,59 @@
+# Numeric runtime settings and descriptive method metadata are recorded together.
+# Method labels describe the implementation; changing a label does not change it.
+noise:
+  working_dtype: float32
+  invalid_floor: -9999.0
+  Lave: arithmetic mean of spatial pixel levels in dB
+  Ln: percentile(valid_pixels, 100-n, method=linear)
+  n_hm: 42.18899750814644
+  n_ml: 80.41019743147403
+  interval_endpoints: absolute maximum and minimum
+
+moran:
+  adjacency: Queen shared polygon vertex
+  island_k: 2
+  island_repair: reciprocal nearest-neighbor links for original islands only
+  normalization: row-standardized binary adjacency
+  permutations: 999
+  alpha: 0.05
+  global_z: normal-theory z-score
+  global_p_norm: two-sided
+  permutation_p: smaller-tail pseudo-p with +1 correction
+  local_inference: conditional permutation
+  multiple_testing_correction: none
+  synthetic_seed: 42
+
+clustering:
+  standardization: StandardScaler
+  random_state: 42
+  n_init: 10
+  diagnostic_k_min: 2
+  diagnostic_k_max: 6
+  interval_features: Q05 to Q95 at increments of 5
+  interval_selection:
+    rule: maximum silhouette; near ties prefer k closest to preferred_k
+    silhouette_tolerance: 0.02
+    preferred_k: 3
+    minimum_k: 3
+    required_interval_k: 3
+  interval_record_range: Q90 minus Q10
+  interval_center_ordering_range: Q95 minus Q10
+  threshold_candidates: [midpoint, min_error, lda]
+  threshold_selection: greatest in-sample agreement with interval clusters
+  four_type_features: [D1, D2, D3, A_range, r1, r2, r3]
+  four_type_k: 4
+  four_type_selection: fixed k with SSE and silhouette diagnostics
+  type_labeling: inverse-scaled center D1 descending gives T1 to T4
+  type_names:
+    T1: High-value attenuation
+    T2: Medium-value attenuation
+    T3: Low-value attenuation
+    T4: Low total attenuation
+
+example:
+  purpose: synthetic demonstration, not manuscript empirical results
+  seed: 42
+  grid_rows: 12
+  grid_columns: 12
+  pixels_per_unit: 128
+  coordinate_system: dimensionless fictional grid without geographic CRS

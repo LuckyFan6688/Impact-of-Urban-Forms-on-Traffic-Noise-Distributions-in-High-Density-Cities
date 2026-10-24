@@ -1,0 +1,63 @@
+# Coordinates are analysis-unit centers; validation blocks are separate units.
+random_seed: 42
+n_jobs: 1
+n_splits: 5
+coordinate_domain: EPSG:32650
+block_m: 2000
+buffer_m: 1000
+origin_grid_m: 1000
+shap_background_max: 100
+shap_background_seed: 0
+response_endpoints:
+  mode: absolute_extrema
+  high_exceedance_percent: 42.18899750814644
+  low_exceedance_percent: 80.41019743147403
+models:
+  NoiseLevel:
+    n_estimators: 400
+    max_depth: 6
+    learning_rate: 0.05
+    subsample: 0.8
+    colsample_bytree: 0.9
+    reg_lambda: 1.0
+  Attenuation:
+    n_estimators: 700
+    max_depth: 6
+    learning_rate: 0.03
+    subsample: 0.85
+    colsample_bytree: 0.85
+    reg_lambda: 1.0
+  Classification:
+    n_estimators: 800
+    max_depth: 6
+    learning_rate: 0.03
+    subsample: 0.85
+    colsample_bytree: 0.85
+    reg_lambda: 1.0
+class_names:
+  - T1 high-value attenuation
+  - T2 medium-value attenuation
+  - T3 low-value attenuation
+  - T4 low total attenuation
+
+# Original field names and their Table 1 display abbreviations, in matrix order.
+predictor_abbreviations:
+  mean_height: ABH
+  build_density: GSI
+  FAR_index: FSI
+  build_edge_density: BBD
+  build_lsi: ALSI
+  road_length_index: RLI
+  road_area_density: RAD
+  road_lsi: RLSI
+  main_road_length_index: TRLI
+  land_mix_entropy: DLM
+  land_mix_norm_0to1: DFM
+  land_type_1: PT
+  land_type_2: PG
+  land_type_3: PB
+  land_type_4: PC
+  land_type_5: PR
+  land_type_6: PI
+  land_type_7: PW
+  land_type_8: PO

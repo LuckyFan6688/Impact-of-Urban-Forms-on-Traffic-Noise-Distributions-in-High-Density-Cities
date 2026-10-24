@@ -1,0 +1,1 @@
+#Due to restrictions from third-party data agreements and the privacy policies of certain national institutions, specific metric calculation results cannot be provided here; however, some sample data can be supplied.
