@@ -25,8 +25,7 @@ import pandas as pd
 HERE = Path(__file__).resolve().parent
 RESULTS = HERE / 'results'
 
-COMPARISON = Path(r'E:/樊国帆/研究生/大小论文/小论文/第二篇小论文/AA投稿/第二次修改/'
-                  r'spatial_cv_uniform_2km_review/data/comparison.csv')
+COMPARISON = Path()
 CV_FILE = RESULTS / '2km_cross-validation results.csv'
 STAB_FILE = RESULTS / 'shap_Stability Results.csv'
 REPORTED = RESULTS / 'appendix_table_4.csv'
